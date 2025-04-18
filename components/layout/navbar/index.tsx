@@ -7,6 +7,9 @@ import { Suspense } from 'react';
 import MobileMenu from './mobile-menu';
 import Search, { SearchSkeleton } from './search';
 
+
+
+
 const { SITE_NAME } = process.env;
 
 export async function Navbar() {
@@ -59,3 +62,48 @@ export async function Navbar() {
     </nav>
   );
 }
+
+// 'use client';
+
+// import { getMenuQuery } from 'lib/shopify/queries/menu';
+// import { shopifyFetch } from 'lib/shopify/shopify-fetcher';
+// import { useEffect, useState } from 'react';
+
+// export async function Navbar() {
+//   const [menuItems, setMenuItems] = useState<{ title: string; url: string }[]>([]);
+
+//   useEffect(() => {
+//     async function loadMenu() {
+//       try {
+//         const data = await shopifyFetch({
+//           query: getMenuQuery,
+//           variables: { handle: 'main-menu' },
+//         });
+//         setMenuItems(data.menu?.items || []);
+//       } catch (err) {
+//         console.error('Failed to fetch menu:', err);
+//       }
+//     }
+
+//     loadMenu();
+//   }, []);
+
+//   return (
+//     <nav className="flex items-center justify-between p-4 bg-[#080c5c] text-white">
+//       <div className="text-xl font-bold">RugKnots</div>
+//       <ul className="flex gap-6">
+//         {menuItems.map((item) => {
+//           // Shopify URLs may start with 'https://rugknots-dev.myshopify.com', so trim to relative
+//           const href = item.url.replace(/^https?:\/\/[^/]+/, '');
+//           return (
+//             <li key={item.title}>
+//               <a href={href} className="hover:underline">
+//                 {item.title}
+//               </a>
+//             </li>
+//           );
+//         })}
+//       </ul>
+//     </nav>
+//   );
+// }
